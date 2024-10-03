@@ -43,30 +43,99 @@ class Company implements FileConvertible
         $this->totalEmployees = $totalEmployees;
     }
 
+
     public function toString(): string
     {
-        // Implementation here
-        return "hello";
+        return sprintf(
+            "Company: %s\nFounded: %d\nDescription: %s\nWebsite: %s\nPhone: %s\nIndustry: %s\nCEO: %s\nPublicly Traded: %s\nCountry: %s\nFounder: %s\nTotal Employees: %d",
+            $this->name,
+            $this->foundingYear,
+            $this->description,
+            $this->website,
+            $this->phone,
+            $this->industry,
+            $this->ceo,
+            $this->isPubliclyTraded ? 'Yes' : 'No',
+            $this->country,
+            $this->founder,
+            $this->totalEmployees
+        );
     }
 
     public function toHTML(): string
     {
-        // Implementation here
-        return "hello";
-
+        return sprintf(
+            "<div class='company-card'>
+                <h2>%s</h2>
+                <p>Founded: %d</p>
+                <p>Description: %s</p>
+                <p>Website: <a href='%s'>%s</a></p>
+                <p>Phone: %s</p>
+                <p>Industry: %s</p>
+                <p>CEO: %s</p>
+                <p>Publicly Traded: %s</p>
+                <p>Country: %s</p>
+                <p>Founder: %s</p>
+                <p>Total Employees: %d</p>
+            </div>",
+            $this->name,
+            $this->foundingYear,
+            $this->description,
+            $this->website,
+            $this->website,
+            $this->phone,
+            $this->industry,
+            $this->ceo,
+            $this->isPubliclyTraded ? 'Yes' : 'No',
+            $this->country,
+            $this->founder,
+            $this->totalEmployees
+        );
     }
 
     public function toMarkDown(): string
     {
-        // Implementation here
-        return "hello";
-
+        return sprintf(
+            "# %s\n\n" .
+            "- Founded: %d\n" .
+            "- Description: %s\n" .
+            "- Website: [%s](%s)\n" .
+            "- Phone: %s\n" .
+            "- Industry: %s\n" .
+            "- CEO: %s\n" .
+            "- Publicly Traded: %s\n" .
+            "- Country: %s\n" .
+            "- Founder: %s\n" .
+            "- Total Employees: %d\n",
+            $this->name,
+            $this->foundingYear,
+            $this->description,
+            $this->website,
+            $this->website,
+            $this->phone,
+            $this->industry,
+            $this->ceo,
+            $this->isPubliclyTraded ? 'Yes' : 'No',
+            $this->country,
+            $this->founder,
+            $this->totalEmployees
+        );
     }
 
     public function toArray(): array
     {
-        // Implementation here
-        return ["hello"];
-
+        return [
+            'name' => $this->name,
+            'foundingYear' => $this->foundingYear,
+            'description' => $this->description,
+            'website' => $this->website,
+            'phone' => $this->phone,
+            'industry' => $this->industry,
+            'ceo' => $this->ceo,
+            'isPubliclyTraded' => $this->isPubliclyTraded,
+            'country' => $this->country,
+            'founder' => $this->founder,
+            'totalEmployees' => $this->totalEmployees
+        ];
     }
 }

@@ -2,8 +2,9 @@
 namespace Models;
 
 use DateTime;
+use Interfaces\FileConvertible;
 
-class User {
+class User implements FileConvertible {
     private int $id;
     private string $firstName;
     private string $lastName;
@@ -72,17 +73,16 @@ class User {
         );
     }
 
-    public function toHTML() {
+    public function toHTML(): string {
         return sprintf("
-            <div class='user-card'>
-                <div class='avatar'>SAMPLE</div>
-                <h2>%s %s</h2>
-                <p>%s</p>
-                <p>%s</p>
-                <p>%s</p>
-                <p>Birth Date: %s</p>
-                <p>Membership Expiration Date: %s</p>
-                <p>Role: %s</p>
+            <div>
+                <p>user name: %s %s</p>
+                <p>email: %s</p>
+                <p>phoneNumber: %s</p>
+                <p>address: %s</p>
+                <p>birthDate: %s</p>
+                <p>membershipExpirationDate: %s</p>
+                <p>role: %s</p>
             </div>",
             $this->firstName,
             $this->lastName,
@@ -95,7 +95,7 @@ class User {
         );
     }
 
-    public function toMarkdown() {
+    public function toMarkdown(): string {
         return "## User: {$this->firstName} {$this->lastName}
                 - Email: {$this->email}
                 - Phone Number: {$this->phoneNumber}
@@ -105,7 +105,7 @@ class User {
                 - Role: {$this->role}";
     }
 
-    public function toArray() {
+    public function toArray(): array {
         return [
             'id' => $this->id,
             'firstName' => $this->firstName,

@@ -1,9 +1,10 @@
 <?php
 namespace Models;
 
+use Interfaces\FileConvertible;
 use Models\Company;
 
-class RestaurantChain extends Company
+class RestaurantChain extends Company implements FileConvertible
 {
     public int $chainId;
     public array $restaurantLocations; // RestaurantLocation[]
