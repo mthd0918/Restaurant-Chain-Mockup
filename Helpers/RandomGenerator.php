@@ -4,6 +4,7 @@ namespace Helpers;
 use Faker\Factory;
 use Models\Company;
 use Models\Employee;
+use Models\RestaurantLocation;
 
 class RandomGenerator {
     public static function company(): Company {
@@ -30,7 +31,7 @@ class RandomGenerator {
         $numberOfCompany = $faker->numberBetween($min, $max);
 
         for ($i = 0; $i < $numberOfCompany; $i++) {
-            $companies[] = self::employee();
+            $companies[] = self::company();
         }
 
         return $companies;
@@ -67,5 +68,31 @@ class RandomGenerator {
         }
 
         return $employees;
+    }
+
+    public static function restaurantLocation(): RestaurantLocation {
+        $faker = Factory::create();
+
+        return new RestaurantLocation(
+            $faker->name,
+            $faker->streetAddress,
+            $faker->city,
+            $faker->state,
+            $faker->postcode,
+            self::employees(5, 20),
+            $faker->boolean(80)
+        );
+    }
+
+    public static function restaurantLocations(int $min, int $max): array {
+        $faker = Factory::create();
+        $restaurantLocations = [];
+        $numOfLocations = $faker->numberBetween($min, $max);
+
+        for ($i = 0; $i < $numOfLocations; $i++) {
+            $restaurantLocations[] = self::restaurantLocation();
+        }
+
+        return $restaurantLocations;
     }
 }

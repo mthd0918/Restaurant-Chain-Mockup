@@ -33,28 +33,82 @@ class RestaurantLocation implements FileConvertible
 
     public function toString(): string
     {
-        // Implementation here
-        return "hello";
+        return sprintf(
+            "Location Name: %s Address: %s City: %s State: %s Zip Code: %d Employees: %s isOpen: %s",
+            $this->name,
+            $this->address,
+            $this->city,
+            $this->state,
+            $this->zipCode,
+            implode(', ', $this->employees),
+            $this->isOpen ? 'Yes' : 'No'
+        );
     }
 
     public function toHTML(): string
     {
-        // Implementation here
-        return "hello";
+        $employeesHTML = array_map(function($employee) {
+            return $employee->toHTML();
+        }, $this->employees);
+
+        return sprintf("
+            <div>
+                <p>Location Name: %s</p>
+                <p>Address: %s</p>
+                <p>City: %s</p>
+                <p>State: %s</p>
+                <p>Zip Code: %d</p>
+                <p>Employees: %s</p>
+                <p>isOpen: %s</p>
+            </div>
+            ",
+            $this->name,
+            $this->address,
+            $this->city,
+            $this->state,
+            $this->zipCode,
+            implode(', ', $employeesHTML),
+            $this->isOpen ? 'Yes' : 'No'
+    );
 
     }
 
     public function toMarkDown(): string
     {
-        // Implementation here
-        return "hello";
+        $employeesMarkdown = array_map(function($employee) {
+            return $employee->toMarkDown();
+        }, $this->employees);
 
+        return sprintf("
+                ## Location: %s
+                - Address: %s
+                - City: %s
+                - State: %s
+                - Zip Code: %s
+                ### Employees:
+                %s
+                - Is Open: %s
+                ",
+            $this->name,
+            $this->address,
+            $this->city,
+            $this->state,
+            $this->zipCode,
+            implode("\n", $employeesMarkdown),
+            $this->isOpen ? 'Yes' : 'No'
+        );
     }
 
     public function toArray(): array
     {
-        // Implementation here
-        return ["hello"];
-
+        return [
+            'locationName' => $this->name,
+            'address' => $this->address,
+            'city' => $this->city,
+            'state' => $this->state,
+            'zipCode' => $this->zipCode,
+            'employees' => $this->employees,
+            'isOpen' => $this->isOpen
+        ];
     }
 }

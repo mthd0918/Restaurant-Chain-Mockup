@@ -66,7 +66,7 @@ class Company implements FileConvertible
     {
         return sprintf(
             "<div class='company-card'>
-                <h2>%s</h2>
+                <p>%s</p>
                 <p>Founded: %d</p>
                 <p>Description: %s</p>
                 <p>Website: <a href='%s'>%s</a></p>

@@ -37,4 +37,20 @@ class RestaurantChain extends Company implements FileConvertible
         $this->numberOfLocations = $numberOfLocations;
         $this->parentCompany = $parentCompany;
     }
+
+    // FileConvertible インターフェースのメソッドをオーバーライド
+    // public function toHTML(): string
+    // {
+
+    // }
+
+    // public function toMarkDown(): string
+    // {
+
+    // }
+
+    // public function toArray(): array
+    // {
+
+    // }
 }
