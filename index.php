@@ -19,6 +19,7 @@ use Helpers\RandomGenerator;
 $employees = RandomGenerator::employees(1, 1);
 $companies = RandomGenerator::companies(1, 1);
 $restaurantLocations = RandomGenerator::restaurantLocations(1, 1);
+$restaurantChains = RandomGenerator::restaurantChains(1, 1);
 ?>
 
 <!DOCTYPE html>
@@ -51,8 +52,15 @@ $restaurantLocations = RandomGenerator::restaurantLocations(1, 1);
         <div class="restaurantLocation-card">
         <p class="line">------ restaurantLocation info ------</p>
         <?php foreach ($restaurantLocations as $restaurantLocation): ?>
-            <!-- company info -->
+            <!-- restaurantLocation info -->
             <?php echo $restaurantLocation->toHTML(); ?>
+            <?php endforeach; ?>
+        </div>
+        <div class="restaurantChain-card">
+        <p class="line">------ restaurantChain info ------</p>
+        <?php foreach ($restaurantChains as $restaurantChain): ?>
+            <!-- restaurantLocation info -->
+            <?php echo $restaurantChain->toHTML(); ?>
             <?php endforeach; ?>
         </div>
     </body>
