@@ -33,35 +33,64 @@ $restaurantChains = RandomGenerator::restaurantChains(1, 1);
                 color: blue;
             }
         </style>
+        <!-- Bootstrap CSS -->
+        <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Bootstrap Bundle JS (includes Popper) -->
+        <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     </head>
-    <body>
-        <div class="employee-card">
-            <p class="line">--------- employee info ---------</p>
-            <?php foreach ($employees as $employee): ?>
-                <!-- employee info -->
-                <?php echo $employee->toHTML(); ?>
-                <?php endforeach; ?>
+    <body class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Employee Info</h5>
+                </div>
+                <div class="card-body">
+                    <?php foreach ($employees as $employee): ?>
+                        <?php echo $employee->toHTML(); ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
-        <div class="company-card">
-        <p class="line">------ company info ------</p>
-        <?php foreach ($companies as $company): ?>
-            <!-- company info -->
-            <?php echo $company->toHTML(); ?>
-            <?php endforeach; ?>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Company Info</h5>
+                </div>
+                <div class="card-body">
+                    <?php foreach ($companies as $company): ?>
+                        <?php echo $company->toHTML(); ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
-        <div class="restaurantLocation-card">
-        <p class="line">------ restaurantLocation info ------</p>
-        <?php foreach ($restaurantLocations as $restaurantLocation): ?>
-            <!-- restaurantLocation info -->
-            <?php echo $restaurantLocation->toHTML(); ?>
-            <?php endforeach; ?>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Restaurant Location Info</h5>
+                </div>
+                <div class="card-body">
+                    <?php foreach ($restaurantLocations as $restaurantLocation): ?>
+                        <?php echo $restaurantLocation->toHTML(); ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
-        <div class="restaurantChain-card">
-        <p class="line">------ restaurantChain info ------</p>
-        <?php foreach ($restaurantChains as $restaurantChain): ?>
-            <!-- restaurantLocation info -->
-            <?php echo $restaurantChain->toHTML(); ?>
-            <?php endforeach; ?>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-warning">
+                    <h5 class="mb-0">Restaurant Chain Info</h5>
+                </div>
+                <div class="card-body">
+                    <?php foreach ($restaurantChains as $restaurantChain): ?>
+                        <?php echo $restaurantChain->toHTML(); ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
