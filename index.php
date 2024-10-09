@@ -31,35 +31,40 @@ $restaurantChains = RandomGenerator::restaurantChains(1, 2);
         <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
-        <div class="container">
+        <?php foreach ($restaurantChains as $chainIndex => $chain): ?>
             <div class="container">
-                <?php foreach ($restaurantChains as $chain): ?>
-                    <div class="container">
-                        <h2 class="m-4 text-center">Restaurant Chain: <?php echo htmlspecialchars($chain->name); ?></h2>
-                        <div class="card">
-                            <div class="card-header d-flex align-items-center">
-                                <p class="m-0">Restaurant Chain Information</p>
-                            </div>
-                            <div class="card-body">
-                                <h3>hello</h3>
-                            </div>
-                            <div class="accordion m-2" id="accordionExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Accordion Item #1
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                                </div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- restaurant chain name -->
+                <h2 class="m-4 text-center">Restaurant Chain: <?php echo htmlspecialchars($chain->name); ?></h2>
+                <!-- restaurant chain card -->
+                <div class="card">
+                    <!-- card-header -->
+                    <div class="card-header d-flex align-items-center">
+                        <p class="m-0">Restaurant Chain Information</p>
                     </div>
-                <?php endforeach; ?>
+                    <!-- card-body -->
+                    <div class="card-body">
+                        <!-- accordion: chain detail info -->
+                        <?php foreach ($chain->restaurantLocations as $locationIndex => $location): ?>
+                            <div class="accordion m-2" id="accordion_<?php echo $chainIndex ?>">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                                data-bs-target="#collapse_<?php echo $chainIndex ?>_<?php echo $locationIndex ?>" 
+                                                aria-expanded="false" aria-controls="collapse_<?php echo $chainIndex ?>_<?php echo $locationIndex ?>">
+                                            <?php echo htmlspecialchars($location->name); ?>
+                                        </button>
+                                    </h2>
+                                    <div id="collapse_<?php echo $chainIndex ?>_<?php echo $locationIndex ?>" class="accordion-collapse collapse" data-bs-parent="#accordion_<?php echo $chainIndex ?>">
+                                        <div class="accordion-body">
+                                            accordion content
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
-        </div>
+        <?php endforeach; ?>
     </body>
 </html>

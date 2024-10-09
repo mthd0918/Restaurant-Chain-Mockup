@@ -75,7 +75,7 @@ class RandomGenerator {
         $faker = Factory::create();
 
         return new RestaurantLocation(
-            $faker->name,
+            $faker->city,
             $faker->streetAddress,
             $faker->city,
             $faker->state,
@@ -103,7 +103,7 @@ class RandomGenerator {
 
         return new RestaurantChain(
             $faker->numberBetween(100000, 999999),
-            self::restaurantLocations(2, 3),
+            self::restaurantLocations(1, 3),
             $faker->word,
             $faker->numberBetween(3, 100),
             $parentCompany->name,
